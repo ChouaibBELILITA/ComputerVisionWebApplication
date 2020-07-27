@@ -3,6 +3,7 @@ import MyTable from "./table";
 import { Descriptions, Divider, Card, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 
+
 class DetailView extends Component {
   state = {};
 

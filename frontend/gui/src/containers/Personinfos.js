@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Menu, Card, Avatar } from "antd";
 import DetailView from "../components/PersonDetails";
+import Charts from "../components/personStatistic";
 import axios from "axios";
 import {
   IdcardOutlined,
@@ -33,7 +34,7 @@ class Details extends Component {
       return <DetailView data={this.state.data} />;
     }
     if (tab == "tab2") {
-      return "content 2";
+      return <Charts></Charts>;
     }
     if (tab == "tab3") {
       return "content 3";
