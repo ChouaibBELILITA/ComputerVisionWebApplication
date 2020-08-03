@@ -7,7 +7,7 @@ import Home from "./containers/Home";
 const BaseRouter = () => {
   return (
     <div>
-      <Route exact path="/" component={Home} />
+      <Route exact path="/:cameraId/" component={Home} />
       <Route exact path="/details/" component={MyTable} />
       <Route exact path="/details/:personId" component={Details} />
       <Route exact path="/statistics/" component={Charts} />

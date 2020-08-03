@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import CanvasContainer from "./canvascontainer";
 import { Input, Layout, Menu, Breadcrumb } from "antd";
 import {
   DesktopOutlined,
@@ -9,7 +9,7 @@ import {
 } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
-const { Search } = Input;
+const { SubMenu } = Menu;
 class MyMain extends Component {
   state = {
     collapsed: false,
@@ -31,9 +31,58 @@ class MyMain extends Component {
           <div className="logo"></div>
 
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-            <Menu.Item key="1" icon={<DesktopOutlined />}>
-              <NavLink to="/">Home</NavLink>
-            </Menu.Item>
+            <SubMenu key="1" icon={<DesktopOutlined />} title="Home">
+              <Menu.Item key="5">
+                <NavLink to="/camera1/">
+                  <img
+                    className="img-fluid"
+                    width="30%"
+                    height="50%"
+                    src="./images/one.png"
+                  ></img>
+                  <span></span>
+                  camera 1
+                </NavLink>
+              </Menu.Item>
+              <Menu.Item key="6">
+                <NavLink to="/camera2/">
+                  <img
+                    className="img-fluid"
+                    width="30%"
+                    height="50%"
+                    src="./images/one.png"
+                  ></img>
+                  <span></span>
+                  camera 2
+                </NavLink>
+              </Menu.Item>
+              <Menu.Item key="7">
+                <NavLink to="/camera3/">
+                  <img
+                    className="img-fluid"
+                    width="30%"
+                    height="50%"
+                    src="./images/one.png"
+                  ></img>
+                  <span></span>
+                  camera 3
+                </NavLink>
+              </Menu.Item>
+              <Menu.Item key="8">
+                <NavLink to="/camera4/">
+                  <img
+                    className="img-fluid"
+                    width="30%"
+                    height="50%"
+                    src="./images/one.png"
+                  ></img>
+                  <span></span>
+                  camera 4
+                </NavLink>
+                <div></div>
+              </Menu.Item>
+            </SubMenu>
+
             <Menu.Item key="2" icon={<PieChartOutlined />}>
               <NavLink to="/statistics/">Statistic</NavLink>
             </Menu.Item>
@@ -54,9 +103,7 @@ class MyMain extends Component {
     </Breadcrumb>*/}
             <div>{this.props.children}</div>
           </Content>
-          <Footer style={{ textAlign: "center" }}>
-            Ant Design ©2018 Created by Ant UED
-          </Footer>
+          <Footer style={{ textAlign: "center" }}>IGAF</Footer>
         </Layout>
       </Layout>
     );

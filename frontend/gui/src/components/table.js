@@ -125,7 +125,7 @@ class MyTable extends Component {
         </Space>
         <Table
           columns={columns}
-          dataSource={this.state.detections}
+          dataSource={this.props.personinfo}
           onChange={this.handleChange}
         />
       </>

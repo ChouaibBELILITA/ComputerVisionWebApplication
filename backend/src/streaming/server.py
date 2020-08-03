@@ -50,7 +50,8 @@ async def time(websocket, path):
 
         data = next(gen(camera))
 
-        js = {'id': i, 'data': data}
+        js = {'id': i, 'data': [{"name": "mahmoud", "age": 15}, {
+            "name": "chouaib", "age": 17}]}
         res_bytes = json.dumps(js).encode('utf-8')
         base6 = base64.b64encode(res_bytes)
         message = base6.decode('utf-8')
