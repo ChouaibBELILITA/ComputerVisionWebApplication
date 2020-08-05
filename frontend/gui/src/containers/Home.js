@@ -25,13 +25,15 @@ class Home extends Component {
       links: links,
       curent: curent,
     };
-    console.log(link);
   }
   setData = (personinfo) => {
     this.setState({
       personinfo: personinfo,
     });
   };
+  shouldComponentUpdate() {
+    return false;
+  }
   render() {
     return (
       <div className=".container-fluid overflow-auto" width="100%">
@@ -44,7 +46,7 @@ class Home extends Component {
           setdata={this.setData}
           key="1"
         ></VideoSocket>
-        <MyTable personinfo={this.state.personinfo}></MyTable>
+        <MyTable></MyTable>
       </div>
     );
   }

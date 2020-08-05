@@ -1,6 +1,8 @@
 import { Table, Button, Space } from "antd";
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+
 const data = [
   {
     key: "1",
@@ -30,21 +32,21 @@ const data = [
 
 class MyTable extends Component {
   state = {
-    detections: [],
-
     filteredInfo: null,
     sortedInfo: null,
   };
+  /*
   componentDidMount() {
     let link = this.props.link;
     console.log(link);
+    console.log(this.props.personinfo)
     if (link == null) {
       link = "http://127.0.0.1:8000/api/";
     }
     axios.get(link).then((res) => {
       this.setState({ detections: res.data });
     });
-  }
+  }*/
 
   handleChange = (pagination, filters, sorter) => {
     console.log("Various parameters", pagination, filters, sorter);
@@ -75,6 +77,7 @@ class MyTable extends Component {
   };
 
   render() {
+    console.log(this.props);
     let { sortedInfo, filteredInfo } = this.state;
     sortedInfo = sortedInfo || {};
     filteredInfo = filteredInfo || {};
@@ -125,11 +128,18 @@ class MyTable extends Component {
         </Space>
         <Table
           columns={columns}
-          dataSource={this.props.personinfo}
+          dataSource={this.props.detections}
           onChange={this.handleChange}
         />
       </>
     );
   }
 }
-export default MyTable;
+const mapStateToProps = (state, ownProps) => {
+  console.log("state");
+  console.log(state.personsInfo);
+  return {
+    detections: [...state.personsInfo],
+  };
+};
+export default connect(mapStateToProps)(MyTable);

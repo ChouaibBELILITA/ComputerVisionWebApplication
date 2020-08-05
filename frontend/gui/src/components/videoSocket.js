@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./canvas.css";
+import { connect } from "react-redux";
 
 function b64toBlob(dataURI) {
   var byteString = atob(dataURI.split(",")[0]);
@@ -31,15 +32,23 @@ class VideoSocket extends Component {
       websocket: ws,
     };
   }
+  shouldComponentUpdate() {
+    return false;
+  }
 
   render() {
     const self = this;
+    var i = 0;
     this.state.websocket.onmessage = function (event) {
       var js = JSON.parse(atob(event.data.split(",")[0]));
 
       var data = b64toBlob(js["data"]);
       var personinfo = { infos: js["infos"] };
-      //self.props.setdata(personinfo);
+      if (i == 0) {
+        self.props.setData(personinfo);
+      }
+      i = (i + 1) % 5;
+      console.log(i);
 
       var urlObject = URL.createObjectURL(data);
 
@@ -75,9 +84,17 @@ class VideoSocket extends Component {
         >
           Sorry, your browser doesn't support the &lt;canvas&gt; element.
         </canvas>
+        <button onClick={this.sendData}>delete</button>
       </div>
     );
   }
 }
-
-export default VideoSocket;
+const mapDispachToProps = (dispatch) => {
+  //dispatch(todoAction);
+  return {
+    setData: (data) => {
+      dispatch({ type: "SET_PERSONS_INFOS", data: data });
+    },
+  };
+};
+export default connect(null, mapDispachToProps)(VideoSocket);
