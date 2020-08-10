@@ -237,19 +237,6 @@ class Charts extends Component {
           </div>
         </div>
 
-        <div>
-          <div>
-            {" "}
-            <div></div>
-            <div></div>
-          </div>
-          <div>
-            {" "}
-            <div></div>
-            <div></div>
-          </div>
-        </div>
-
         <div className="col-xl-12 col-lg-8">
           <div className="card shadow mb-4">
             <div className="card-header py-3">
@@ -268,26 +255,100 @@ class Charts extends Component {
           </div>
         </div>
 
-        <div className="col-xl-4 col-lg-5">
-          <div className="card shadow mb-4">
-            <div className="card-header py-3">
-              <h6 className="m-0 font-weight-bold text-primary">Donut Chart</h6>
-            </div>
+        <div className="d-flex p-2 bd-highlight d-flex align-items-stretch">
+          <div className="col-xl-4 d-flex">
+            <div className="card shadow mb-4 .flex-fill">
+              <div className="card-header py-3">
+                <h6 className="m-0 font-weight-bold text-primary">Bar Chart</h6>
+              </div>
 
-            <div className="card-body">
-              <div className="chart-donut pt-4">
-                <Doughnut
-                  id="doughnut"
-                  data={this.state.ageData}
-                  options={{
-                    maintainAspectRatio: false,
-                  }}
-                />
+              <div className="card-body">
+                <div className="chart-donut pt-4">
+                  <Doughnut
+                    id="doughnut"
+                    data={this.state.ageData}
+                    options={{
+                      maintainAspectRatio: false,
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className=" d-flex flex-column bd-highlight mb-3 col-lg-8">
+            <div className="card shadow  .flex-fill">
+              <div className="card-header py-3">
+                <h6 className="m-0 font-weight-bold text-primary">Bar Chart</h6>
+              </div>
+
+              <div className="card-body">
+                <div className="chart-Bar pt-4">
+                  <Bar
+                    id="Bar"
+                    data={this.state.genderData}
+                    options={{ maintainAspectRatio: false }}
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
 
+        <div className="d-flex p-2 bd-highlight d-flex align-items-stretch">
+          <div className="col-xl-4 d-flex">
+            <div className="card shadow mb-4 .flex-fill">
+              <div className="card-header py-3">
+                <h6 className="m-0 font-weight-bold text-primary">Bar Chart</h6>
+              </div>
+
+              <div className="card-body">
+                <div className="chart-donut pt-4">
+                  <Doughnut
+                    id="doughnut"
+                    data={this.state.ageData}
+                    options={{
+                      maintainAspectRatio: false,
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className=" d-flex flex-column bd-highlight mb-3 col-lg-8">
+            <div className="card shadow mb-4 .flex-fill">
+              <div className="card-header py-3">
+                <h6 className="m-0 font-weight-bold text-primary">
+                  Donut Chart
+                </h6>
+              </div>
+
+              <div className="card-body">
+                <div className="chart-Bar pt-4">
+                  <Bar
+                    id="Bar"
+                    data={this.state.genderData}
+                    options={{ maintainAspectRatio: false }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="card shadow mb-4 .flex-fill">
+              <div className="card-header py-3">
+                <h6 className="m-0 font-weight-bold text-primary">Bar Chart</h6>
+              </div>
+
+              <div className="card-body">
+                <div className="chart-Bar pt-4">
+                  <Bar
+                    id="Bar"
+                    data={this.state.genderData}
+                    options={{ maintainAspectRatio: false }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div>
           <Line
             data={this.state.genderData}

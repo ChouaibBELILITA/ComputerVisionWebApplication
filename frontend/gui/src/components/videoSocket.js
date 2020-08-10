@@ -44,7 +44,7 @@ class VideoSocket extends Component {
 
       var data = b64toBlob(js["data"]);
       var personinfo = { infos: js["infos"] };
-      if (i == 0) {
+      if (i == 4) {
         self.props.setData(personinfo);
       }
       i = (i + 1) % 5;
@@ -84,7 +84,6 @@ class VideoSocket extends Component {
         >
           Sorry, your browser doesn't support the &lt;canvas&gt; element.
         </canvas>
-        <button onClick={this.sendData}>delete</button>
       </div>
     );
   }

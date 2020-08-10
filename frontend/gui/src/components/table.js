@@ -77,7 +77,6 @@ class MyTable extends Component {
   };
 
   render() {
-    console.log(this.props);
     let { sortedInfo, filteredInfo } = this.state;
     sortedInfo = sortedInfo || {};
     filteredInfo = filteredInfo || {};
@@ -136,8 +135,6 @@ class MyTable extends Component {
   }
 }
 const mapStateToProps = (state, ownProps) => {
-  console.log("state");
-  console.log(state.personsInfo);
   return {
     detections: [...state.personsInfo],
   };

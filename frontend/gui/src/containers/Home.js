@@ -15,7 +15,7 @@ class Home extends Component {
       4: "127.0.0.1:5681",
     };
     const CameraId = props.match.params.cameraId;
-    console.log(CameraId);
+    
     let link = links[CameraId];
     if (link == null) {
       link = "127.0.0.1:5678";
@@ -25,6 +25,7 @@ class Home extends Component {
       links: links,
       curent: curent,
     };
+
   }
   setData = (personinfo) => {
     this.setState({
@@ -37,6 +38,7 @@ class Home extends Component {
   render() {
     return (
       <div className=".container-fluid overflow-auto" width="100%">
+
         <div></div>
         <VideoSocket
           className=""

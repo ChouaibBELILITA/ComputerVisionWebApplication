@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CanvasContainer from "./canvascontainer";
+
 import { Input, Layout, Menu, Breadcrumb } from "antd";
 import {
   DesktopOutlined,
@@ -33,7 +33,7 @@ class MyMain extends Component {
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
             <SubMenu key="1" icon={<DesktopOutlined />} title="Home">
               <Menu.Item key="5">
-                <NavLink to="/camera1/">
+                <NavLink to="/home/1/">
                   <img
                     className="img-fluid"
                     width="30%"
@@ -45,7 +45,7 @@ class MyMain extends Component {
                 </NavLink>
               </Menu.Item>
               <Menu.Item key="6">
-                <NavLink to="/camera2/">
+                <NavLink to="/home/c2/">
                   <img
                     className="img-fluid"
                     width="30%"
@@ -57,7 +57,7 @@ class MyMain extends Component {
                 </NavLink>
               </Menu.Item>
               <Menu.Item key="7">
-                <NavLink to="/camera3/">
+                <NavLink to="/home/3/">
                   <img
                     className="img-fluid"
                     width="30%"
@@ -69,7 +69,7 @@ class MyMain extends Component {
                 </NavLink>
               </Menu.Item>
               <Menu.Item key="8">
-                <NavLink to="/camera4/">
+                <NavLink to="/home/4/">
                   <img
                     className="img-fluid"
                     width="30%"
