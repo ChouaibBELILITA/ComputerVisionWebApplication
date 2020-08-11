@@ -62,6 +62,7 @@ class Detections(models.Model):
         Video, null=True, verbose_name=u'Video', on_delete=models.SET_NULL)
 
     suspect = models.BooleanField(default=False)
+    # duree = models.DurationField()
 
     def __str__(self):
         return str(self.video.date)+"__"+str(self.video.time.hour)+":"+str(self.video.time.minute)+"  : "+self.person.familyName+" "+self.person.firstName

@@ -48,18 +48,65 @@ class PersonDetailSerializer(serializers.Serializer):
         return instance
 
 
-class PersonPerMonthSerializer(serializers.Serializer):
+class PersonPerYearSerializer(serializers.Serializer):
 
     month = serializers.IntegerField(
         source='detections__video__date__month', allow_null=True)
+
+    person_number = serializers.IntegerField(
+        source='id__count', read_only=True)
+    gender = serializers.ChoiceField(
+
+        choices=GENDER,
+        default="U",)
+
+
+class PersonPerMonthSerializer(serializers.Serializer):
+
+    day = serializers.IntegerField(
+        source='detections__video__date__day', allow_null=True)
     person_numbers = serializers.IntegerField(
         source='id__count', read_only=True)
+    gender = serializers.ChoiceField(
+
+        choices=GENDER,
+        default="U",)
 
 
 class PersonPerDaySerializer(serializers.Serializer):
 
+    hour = serializers.IntegerField(
+        source='detections__video__time__hour', allow_null=True)
+    person_numbers = serializers.IntegerField(
+        source='id__count', read_only=True)
+    gender = serializers.ChoiceField(
+
+        choices=GENDER,
+        default="U",)
+
+
+# -------------------------------------------------age-------------------
+class PersonPerYearAgeSerializer(serializers.Serializer):
+
     month = serializers.IntegerField(
         source='detections__video__date__month', allow_null=True)
+
+    person_number = serializers.IntegerField(
+        source='id__count', read_only=True)
+
+
+class PersonPerMonthAgeSerializer(serializers.Serializer):
+
+    day = serializers.IntegerField(
+        source='detections__video__date__day', allow_null=True)
+    person_numbers = serializers.IntegerField(
+        source='id__count', read_only=True)
+
+
+class PersonPerDayAgeSerializer(serializers.Serializer):
+
+    hour = serializers.IntegerField(
+        source='detections__video__time__hour', allow_null=True)
     person_numbers = serializers.IntegerField(
         source='id__count', read_only=True)
 
