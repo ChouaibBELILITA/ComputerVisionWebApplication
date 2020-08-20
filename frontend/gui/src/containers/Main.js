@@ -45,7 +45,7 @@ class MyMain extends Component {
                 </NavLink>
               </Menu.Item>
               <Menu.Item key="6">
-                <NavLink to="/home/c2/">
+                <NavLink to="/home/2/">
                   <img
                     className="img-fluid"
                     width="30%"

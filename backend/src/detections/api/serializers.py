@@ -121,3 +121,10 @@ class GenderPerMonthSerializer(serializers.Serializer):
         default="U",)
     person_numbers = serializers.IntegerField(
         source='id__count', read_only=True)
+
+
+class CountSerializer(serializers.Serializer):
+
+    person_numbers = serializers.IntegerField(
+        source='id__count', read_only=True)
+

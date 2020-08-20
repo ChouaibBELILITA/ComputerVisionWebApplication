@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 # Create your models here.
 
 
@@ -7,7 +7,7 @@ class Person(models.Model):
 
     firstName = models.CharField(blank=True, max_length=100)
     familyName = models.CharField(blank=True, max_length=100)
-    age = models.IntegerField(null=True)
+    age = models.IntegerField(default=0)
     GENDER = [
         ("M", 'Male'),
         ("F", 'Female'),
@@ -44,8 +44,7 @@ class Video(models.Model):
         Person, verbose_name=u'Detections', through='Detections')
 
     date = models.DateField(auto_now=False, auto_now_add=True)
-    time = models.TimeField(auto_now=False, auto_now_add=True)
-    contientAlert = models.BooleanField(default=False)
+    time = models.TimeField(auto_now=False, auto_now_add=True,)
     '''
     chemin = models.models.FilePathField(
         path=None, match=None, recursive='recursive', max_length=100)
