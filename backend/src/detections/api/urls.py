@@ -1,15 +1,39 @@
 from django.urls import path
-from .views import personDetailView, personListView, personPerYearListView, personPerMonthListView, personDetailPerDayListView, personDetailPerMonthListView, personPerDayListView, personDetailPerHourListView, personPerYearAgeListView, personPerMonthAgeListView, personPerDayAgeListView, personPerDayCountListView, personPerMonthCountListView, personPerYearCountListView, SuspectPersonPerYearCountListView, SuspectPersonPerMonthCountListView, SuspectPersonPerDayCountListView
-urlpatterns = [
+from .views import personViewSet, personListView, personPerYearListView, personPerMonthListView, personDetailPerDayListView, personDetailPerMonthListView, personPerDayListView, personPerYearAgeListView, personPerMonthAgeListView, personPerDayAgeListView, personPerDayCountListView, personPerMonthCountListView, personPerYearCountListView, SuspectPersonPerYearCountListView, SuspectPersonPerMonthCountListView, SuspectPersonPerDayCountListView, personDetectionPerMonthDetailListView, personDetectionPerDayDetailListView, personDetectionPerYearDetailListView, persontimelineListView, personTotalListView
+
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'persons', personViewSet, basename='personضس')
+urlpatterns = router.urls
+urlpatterns += [
+
+
     # ----------------------------------------- person details---------------------------------
-    path('persons', personListView.as_view()),
-    path('persons/<pk>', personDetailView.as_view()),
+
+
+
     path('details/<int:year>/<int:month>/',
          personDetailPerMonthListView.as_view()),
+    path('timeline/<int:id>/<int:year>/',
+         persontimelineListView.as_view()),
+
+    path('persontotal/<int:id>/<int:year>',
+         personTotalListView.as_view()),
+
+
+
+
     path('details/<int:year>/<int:month>/<int:day>/',
          personDetailPerDayListView.as_view()),
-    path('details/<int:year>/<int:month>/<int:day>/<int:hour>',
-         personDetailPerHourListView.as_view()),
+    #     path('details/<int:year>/<int:month>/<int:day>/<int:hour>',
+    #          personDetailPerHourListView.as_view()),
+    path('persondetails/month/<int:id>/<int:year>/<int:month>/',
+         personDetectionPerMonthDetailListView.as_view()),
+    path('persondetails/day/<int:id>/<int:year>/<int:month>/<int:day>',
+         personDetectionPerDayDetailListView.as_view()),
+    path('persondetails/year/<int:id>/<int:year>/',
+         personDetectionPerYearDetailListView.as_view()),
     # ----------------------------------------counting total ---------------------------------
     path('count/<int:year>/',
          personPerYearCountListView.as_view()),

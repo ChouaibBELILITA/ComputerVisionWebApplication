@@ -10,12 +10,88 @@ GENDER = [
 
 
 class PersonSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Person
-        fields = ('id', 'firstName', 'familyName', 'gender', 'age', )
+        fields = ('id', 'firstName', 'familyName', 'gender', 'age', 'picture')
 
 
-class PersonDetailSerializer(serializers.Serializer):
+class PersonPerMonthDetailSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    firstName = serializers.CharField(
+        required=False, allow_blank=True, max_length=100)
+    familyName = serializers.CharField(
+        required=False, allow_blank=True, max_length=100)
+    age = serializers.IntegerField(allow_null=True)
+
+    gender = serializers.ChoiceField(
+
+        choices=GENDER,
+        default="U",)
+    picture = serializers.ImageField()
+
+
+class TimeLineSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    year = serializers.IntegerField(
+        source='video__date__year', allow_null=True)
+    month = serializers.IntegerField(
+        source='video__date__month', allow_null=True)
+    day = serializers.IntegerField(
+        source='video__date__day', allow_null=True)
+    hour = serializers.IntegerField(
+        source='video__time__hour', allow_null=True)
+    suspect = serializers.BooleanField()
+    camera = serializers.IntegerField(
+        source='video__camera__camid', allow_null=True)
+
+
+class PersonDetectonCountSerializer(serializers.Serializer):
+    month = serializers.IntegerField(
+        source='video__date__month', allow_null=True)
+    detection_numbers = serializers.IntegerField(
+        source='id__count', read_only=True)
+    suspect = serializers.BooleanField()
+
+
+class PersonPerDayDetailSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    firstName = serializers.CharField(
+        required=False, allow_blank=True, max_length=100)
+    familyName = serializers.CharField(
+        required=False, allow_blank=True, max_length=100)
+    age = serializers.IntegerField(allow_null=True)
+
+    gender = serializers.ChoiceField(
+
+        choices=GENDER,
+        default="U",)
+    # hour = serializers.IntegerField(
+    #     source='detections__video__time__hour', allow_null=True)
+
+
+class personDetectionPerMonthDetailSerializer(serializers.Serializer):
+    day = serializers.IntegerField(
+        source='detections__video__date__day', allow_null=True)
+    detection_numbers = serializers.IntegerField(
+        source='detections__video__id__count', read_only=True)
+
+
+class personDetectionPerDayDetailSerializer(serializers.Serializer):
+    hour = serializers.IntegerField(
+        source='detections__video__time__hour', allow_null=True)
+    detection_numbers = serializers.IntegerField(
+        source='detections__video__id__count', read_only=True)
+
+
+class personDetectionPerYearDetailSerializer(serializers.Serializer):
+    month = serializers.IntegerField(
+        source='detections__video__date__month', allow_null=True)
+    detection_numbers = serializers.IntegerField(
+        source='detections__video__id__count', read_only=True)
+
+
+class PersonPerHourDetailSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     firstName = serializers.CharField(
         required=False, allow_blank=True, max_length=100)
@@ -28,25 +104,8 @@ class PersonDetailSerializer(serializers.Serializer):
         choices=GENDER,
         default="U",)
 
-    def create(self, validated_data):
-        """
-        Create and return a new `Snippet` instance, given the validated data.
-        """
-        return Person.objects.create(**validated_data)
 
-    def update(self, instance, validated_data):
-        """
-        Update and return an existing `Snippet` instance, given the validated data.
-        """
-        instance.firstName = validated_data.get(
-            'firstName', instance.firstName)
-        instance.familyName = validated_data.get(
-            'familyName', instance.familyName)
-        instance.age = validated_data.get('age', instance.age)
-        instance.Gender = validated_data.get('Gender', instance.Gender)
-        instance.save()
-        return instance
-
+# gender
 
 class PersonPerYearSerializer(serializers.Serializer):
 
@@ -127,4 +186,3 @@ class CountSerializer(serializers.Serializer):
 
     person_numbers = serializers.IntegerField(
         source='id__count', read_only=True)
-

@@ -34,7 +34,7 @@ class Details extends Component {
       return <DetailView data={this.state.data} />;
     }
     if (tab == "tab2") {
-      return <Charts></Charts>;
+      return <Charts id={this.state.data.id}></Charts>;
     }
     if (tab == "tab3") {
       return "content 3";
@@ -47,14 +47,11 @@ class Details extends Component {
   };
   componentDidMount() {
     const PersonId = this.props.match.params.personId;
-    let link = this.props.link;
-    if (link == null) {
-      link = "http://127.0.0.1:8000/api/" + PersonId;
-    }
+
+    let link = "http://127.0.0.1:8000/api/persons/" + PersonId;
 
     axios.get(link).then((res) => {
       this.setState({ data: res.data });
-      console.log(res.data);
     });
   }
   render() {

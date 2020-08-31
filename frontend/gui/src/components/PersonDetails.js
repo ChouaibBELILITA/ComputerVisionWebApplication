@@ -3,34 +3,49 @@ import MyTable from "./table";
 import { Descriptions, Divider, Card, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 
-
 class DetailView extends Component {
   state = {};
+  sexdetail = (sex) => {
+    let sexstring = "";
+    if (sex == "M") {
+      sexstring = "Male";
+    } else if (sex == "F") {
+      sexstring = "Female";
+    }
+    return sexstring;
+  };
 
   render() {
     return (
       <Card>
-        <Avatar size={64} icon={<UserOutlined />} />
-        <p>user Name</p>
+        <Avatar size={127} icon={<img src={this.props.data.picture} />} />
+
         <Divider>Person Info</Divider>
         <Descriptions>
-          <Descriptions.Item label="Name">
-            {this.props.data.name}
+          <Descriptions.Item label="Nom">
+            {this.props.data.familyName}
+          </Descriptions.Item>
+          <Descriptions.Item label="Prenom">
+            {this.props.data.firstName}
           </Descriptions.Item>
           <Descriptions.Item label="Age">
             {this.props.data.age}
           </Descriptions.Item>
-          <Descriptions.Item label="Live">Hangzhou, Zhejiang</Descriptions.Item>
-          <Descriptions.Item label="Remark">empty</Descriptions.Item>
+          <Descriptions.Item label="sex">
+            {this.sexdetail(this.props.data.gender)}
+          </Descriptions.Item>
           <Descriptions.Item label="Address">
-            No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China
+            {this.props.data.address}
+          </Descriptions.Item>
+          <Descriptions.Item label="Remark">
+            {this.props.data.remark}
           </Descriptions.Item>
         </Descriptions>
         <br />
         <br />
         <br />
-        <Divider>Related Persons</Divider>
-        <MyTable link="http://127.0.0.1:8000/api/" />
+        <Divider> Persons with similar face descriptors</Divider>
+        <MyTable link="http://127.0.0.1:8000/api/persons/" />
       </Card>
     );
   }

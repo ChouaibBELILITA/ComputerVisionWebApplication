@@ -87,9 +87,12 @@ class MyMain extends Component {
               <NavLink to="/statistics/">Statistic</NavLink>
             </Menu.Item>
             <Menu.Item key="3" icon={<FileSearchOutlined />}>
-              <NavLink to="/details/">Details</NavLink>
+              <NavLink to="/detections/">Detections</NavLink>
             </Menu.Item>
-            <Menu.Item key="4" icon={<SettingOutlined />}>
+            <Menu.Item key="4" icon={<FileSearchOutlined />}>
+              <NavLink to="/details/">Clients</NavLink>
+            </Menu.Item>
+            <Menu.Item key="5" icon={<SettingOutlined />}>
               <NavLink to="/configuration/">Config</NavLink>
             </Menu.Item>
           </Menu>

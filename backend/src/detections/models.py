@@ -1,9 +1,13 @@
 from django.db import models
+
 from django.utils import timezone
 # Create your models here.
 
 
 class Person(models.Model):
+    
+    picture = models.ImageField(
+        default='default.jpg', upload_to='profile_pics', )
 
     firstName = models.CharField(blank=True, max_length=100)
     familyName = models.CharField(blank=True, max_length=100)
@@ -19,6 +23,8 @@ class Person(models.Model):
         choices=GENDER,
         default="U",
     )
+    # address
+    # remark
 
     # face_Descriptor = models.TextField(default="")
     # Danger_degree = models.TextField()

@@ -27,7 +27,6 @@ const initState = {
   ],
 };
 function tableReducer(state = initState, action) {
-  console.log(action);
   if (action.type == "SET_PERSONS_INFOS") {
     return { ...state, personsInfo: [...action.data.infos] };
   }
