@@ -1,5 +1,5 @@
 // WebSocket.js
-
+/*
 import React, { createContext } from "react";
 import io from "socket.io-client";
 import { WS_BASE } from "./config";
@@ -43,3 +43,4 @@ export default ({ children }) => {
     <WebSocketContext.Provider value={ws}>{children}</WebSocketContext.Provider>
   );
 };
+*/

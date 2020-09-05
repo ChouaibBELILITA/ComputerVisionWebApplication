@@ -161,16 +161,16 @@ class Charts extends Component {
         <br />
         <br />
 
-        <div className="col-xl-12 col-lg-8 " style={{ height: 200 }}>
+        <div className="col-xl-12" style={{ height: 200 }}>
           {" "}
-          <div className="container-fluid  d-flex  mh-100  ">
-            <div className="row flex-fill mh-25 mr-4">
+          <div className="container-fluid w-auto d-flex  mh-100  ">
+            <div className="row flex-fill col-6 mh-25 mr-4">
               <div className="col-xl-6 col-md-6 mb-4 mh-100">
                 <div className="card border-left-primary shadow h-100 py-2">
                   <div className="card-body">
                     <div className="row no-gutters align-items-center">
                       <div className="col mr-2">
-                        <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        <div className="text-xs font-weight-bold text-primary text-uppercase mb-1 text-nowrap overflow-auto">
                           Total detections
                         </div>
                         <div className="h5 mb-0 font-weight-bold text-gray-800">
@@ -190,7 +190,7 @@ class Charts extends Component {
                   <div className="card-body">
                     <div className="row no-gutters align-items-center">
                       <div className="col mr-2">
-                        <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
+                        <div className="text-xs font-weight-bold text-success text-uppercase mb-1 text-nowrap overflow-auto">
                           suspect events
                         </div>
                         <div className="h5 mb-0 font-weight-bold text-gray-800">
@@ -205,7 +205,7 @@ class Charts extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-xl-4 overflow-auto">
+            <div className="col-4 overflow-auto">
               <br />
               <div className="mh-100">
                 {" "}

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import personViewSet, personListView, personPerYearListView, personPerMonthListView, personDetailPerDayListView, personDetailPerMonthListView, personPerDayListView, personPerYearAgeListView, personPerMonthAgeListView, personPerDayAgeListView, personPerDayCountListView, personPerMonthCountListView, personPerYearCountListView, SuspectPersonPerYearCountListView, SuspectPersonPerMonthCountListView, SuspectPersonPerDayCountListView, personDetectionPerMonthDetailListView, personDetectionPerDayDetailListView, personDetectionPerYearDetailListView, persontimelineListView, personTotalListView
+from .views import personViewSet, personListView, personPerYearListView, personPerMonthListView, personDetailPerDayListView, personDetailPerMonthListView, personPerDayListView, personPerYearAgeListView, personPerMonthAgeListView, personPerDayAgeListView, personPerDayCountListView, personPerMonthCountListView, personPerYearCountListView, SuspectPersonPerYearCountListView, SuspectPersonPerMonthCountListView, SuspectPersonPerDayCountListView, personDetectionPerMonthDetailListView, personDetectionPerDayDetailListView, personDetectionPerYearDetailListView, persontimelineListView, personTotalListView, VideosPerPersonMonthDetailView, VideosPerMonthDetailView
 
 from rest_framework.routers import DefaultRouter
 
@@ -20,6 +20,12 @@ urlpatterns += [
 
     path('persontotal/<int:id>/<int:year>',
          personTotalListView.as_view()),
+
+    path('videos/<int:id>/<int:year>',
+         VideosPerPersonMonthDetailView.as_view()),
+    path('videos/<int:year>',
+         VideosPerMonthDetailView.as_view()),
+
 
 
 

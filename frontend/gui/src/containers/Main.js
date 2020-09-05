@@ -6,6 +6,8 @@ import {
   PieChartOutlined,
   SettingOutlined,
   FileSearchOutlined,
+  PlayCircleOutlined,
+  IdcardOutlined,
 } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
@@ -86,13 +88,16 @@ class MyMain extends Component {
             <Menu.Item key="2" icon={<PieChartOutlined />}>
               <NavLink to="/statistics/">Statistic</NavLink>
             </Menu.Item>
-            <Menu.Item key="3" icon={<FileSearchOutlined />}>
+            <Menu.Item key="3" icon={<PlayCircleOutlined />}>
+              <NavLink to="/videos/">Videos</NavLink>
+            </Menu.Item>
+            <Menu.Item key="4" icon={<IdcardOutlined />}>
               <NavLink to="/detections/">Detections</NavLink>
             </Menu.Item>
-            <Menu.Item key="4" icon={<FileSearchOutlined />}>
+            <Menu.Item key="5" icon={<FileSearchOutlined />}>
               <NavLink to="/details/">Clients</NavLink>
             </Menu.Item>
-            <Menu.Item key="5" icon={<SettingOutlined />}>
+            <Menu.Item key="6" icon={<SettingOutlined />}>
               <NavLink to="/configuration/">Config</NavLink>
             </Menu.Item>
           </Menu>

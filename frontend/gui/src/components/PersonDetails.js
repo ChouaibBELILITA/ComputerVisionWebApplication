@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import MyTable from "./table";
+import EditPerson from "./EditPerson";
 import { Descriptions, Divider, Card, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 
 class DetailView extends Component {
-  state = {};
+  state = { data: {} };
+
   sexdetail = (sex) => {
     let sexstring = "";
     if (sex == "M") {
@@ -39,6 +41,12 @@ class DetailView extends Component {
           </Descriptions.Item>
           <Descriptions.Item label="Remark">
             {this.props.data.remark}
+          </Descriptions.Item>
+          <Descriptions.Item>
+            <EditPerson
+              reloadData={this.props.reloadData}
+              personId={this.props.data.id}
+            ></EditPerson>
           </Descriptions.Item>
         </Descriptions>
         <br />

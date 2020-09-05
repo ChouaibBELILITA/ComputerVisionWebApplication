@@ -13,7 +13,8 @@ class PersonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Person
-        fields = ('id', 'firstName', 'familyName', 'gender', 'age', 'picture')
+        fields = ('id', 'firstName', 'familyName', 'gender',
+                  'age',  'address', 'remark', 'picture')
 
 
 class PersonPerMonthDetailSerializer(serializers.Serializer):
@@ -29,6 +30,17 @@ class PersonPerMonthDetailSerializer(serializers.Serializer):
         choices=GENDER,
         default="U",)
     picture = serializers.ImageField()
+
+
+class VideosPerPersonMonthDetailSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+
+    persons = serializers.IntegerField(
+        source='detections__count', read_only=True)
+
+    date = serializers.DateField()
+    time = serializers.TimeField()
+    videopath = serializers.FileField()
 
 
 class TimeLineSerializer(serializers.Serializer):

@@ -5,7 +5,7 @@ from django.utils import timezone
 
 
 class Person(models.Model):
-    
+
     picture = models.ImageField(
         default='default.jpg', upload_to='profile_pics', )
 
@@ -23,8 +23,8 @@ class Person(models.Model):
         choices=GENDER,
         default="U",
     )
-    # address
-    # remark
+    address = models.CharField(blank=True, max_length=100)
+    remark = models.TextField(default="no remark")
 
     # face_Descriptor = models.TextField(default="")
     # Danger_degree = models.TextField()
@@ -51,6 +51,8 @@ class Video(models.Model):
 
     date = models.DateField(auto_now=False, auto_now_add=True)
     time = models.TimeField(auto_now=False, auto_now_add=True,)
+    videopath = models.FileField(
+        default="empty.mp4", upload_to="videos", max_length=100)
     '''
     chemin = models.models.FilePathField(
         path=None, match=None, recursive='recursive', max_length=100)
@@ -58,6 +60,9 @@ class Video(models.Model):
 
     def __str__(self):
         return str(self.pk)
+
+    class Meta:
+        ordering = ['-date', '-time', 'camera']
 
 
 class Detections(models.Model):

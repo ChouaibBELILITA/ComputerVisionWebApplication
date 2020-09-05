@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { Menu, Card, Avatar } from "antd";
+import { Menu, Card, Empty } from "antd";
 import DetailView from "../components/PersonDetails";
 import Charts from "../components/personStatistic";
 import axios from "axios";
+import PersonVideoContainer from "./personVideosContainer";
 import {
   IdcardOutlined,
   AreaChartOutlined,
   VideoCameraOutlined,
-  UserOutlined,
 } from "@ant-design/icons";
 
 const { SubMenu } = Menu;
@@ -30,14 +30,32 @@ class Details extends Component {
   };
 
   content = (tab) => {
-    if (tab == "tab1") {
-      return <DetailView data={this.state.data} />;
-    }
-    if (tab == "tab2") {
-      return <Charts id={this.state.data.id}></Charts>;
-    }
-    if (tab == "tab3") {
-      return "content 3";
+    if (this.state.data.id == null) {
+      if (tab == "tab1") {
+        return <Empty />;
+      }
+      if (tab == "tab2") {
+        return <Empty />;
+      }
+      if (tab == "tab3") {
+        return <Empty />;
+      }
+    } else {
+      if (tab == "tab1") {
+        return (
+          <DetailView reloadData={this.reloadData} data={this.state.data} />
+        );
+      }
+      if (tab == "tab2") {
+        return <Charts id={this.state.data.id}></Charts>;
+      }
+      if (tab == "tab3") {
+        return (
+          <PersonVideoContainer
+            personId={this.state.data.id}
+          ></PersonVideoContainer>
+        );
+      }
     }
   };
 
@@ -54,6 +72,16 @@ class Details extends Component {
       this.setState({ data: res.data });
     });
   }
+  reloadData = () => {
+    const PersonId = this.props.match.params.personId;
+
+    let link = "http://127.0.0.1:8000/api/persons/" + PersonId;
+
+    axios.get(link).then((res) => {
+      this.setState({ data: res.data });
+    });
+  };
+
   render() {
     const { current } = this.state;
     return (

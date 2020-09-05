@@ -6,8 +6,8 @@ from rest_framework.response import Response
 from rest_framework.request import Request
 from django.contrib.auth.models import User
 from rest_framework.generics import ListAPIView, RetrieveAPIView, UpdateAPIView, CreateAPIView, DestroyAPIView
-from detections.models import Person, Detections
-from .serializers import PersonSerializer, PersonPerDayDetailSerializer, PersonPerMonthDetailSerializer, PersonPerYearSerializer, PersonPerMonthSerializer, PersonPerDaySerializer, PersonPerYearAgeSerializer, PersonPerMonthAgeSerializer, PersonPerDayAgeSerializer, CountSerializer, personDetectionPerMonthDetailSerializer, personDetectionPerDayDetailSerializer, personDetectionPerYearDetailSerializer, TimeLineSerializer, PersonDetectonCountSerializer
+from detections.models import Person, Detections, Video
+from .serializers import PersonSerializer, PersonPerDayDetailSerializer, PersonPerMonthDetailSerializer, PersonPerYearSerializer, PersonPerMonthSerializer, PersonPerDaySerializer, PersonPerYearAgeSerializer, PersonPerMonthAgeSerializer, PersonPerDayAgeSerializer, CountSerializer, personDetectionPerMonthDetailSerializer, personDetectionPerDayDetailSerializer, personDetectionPerYearDetailSerializer, TimeLineSerializer, PersonDetectonCountSerializer, VideosPerPersonMonthDetailSerializer
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from django.shortcuts import get_object_or_404
@@ -21,14 +21,21 @@ class personListView(ListAPIView):
     serializer_class = PersonSerializer
 
 
-
 class personViewSet(viewsets.ModelViewSet):
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
 
 
+class VideosPerPersonMonthDetailView(ListAPIView):
+    def get_queryset(self):
+        return Video.objects.annotate(Count('detections')).filter(Q(detections__person__id=self.kwargs['id']) & Q(date__year=self.kwargs['year']))
+    serializer_class = VideosPerPersonMonthDetailSerializer
 
 
+class VideosPerMonthDetailView(ListAPIView):
+    def get_queryset(self):
+        return Video.objects.annotate(Count('detections')).filter(Q(date__year=self.kwargs['year']))
+    serializer_class = VideosPerPersonMonthDetailSerializer
 
 
 class persontimelineListView(ListAPIView):
@@ -54,7 +61,7 @@ class personDetailPerDayListView(ListAPIView):
 
         return Person.objects.filter(Q(detections__video__date__year=self.kwargs['year']) & Q(detections__video__date__month=self.kwargs['month']) & Q(detections__video__date__day=self.kwargs['day']))
 
-    serializer_class = PersonPerDayDetailSerializer
+    serializer_class = PersonPerMonthDetailSerializer
 
 
 class personDetectionPerMonthDetailListView(ListAPIView):

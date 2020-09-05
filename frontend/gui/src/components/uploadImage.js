@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+
+import "antd/dist/antd.css";
+
 import { Upload, message } from "antd";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 
@@ -20,52 +23,69 @@ function beforeUpload(file) {
   return isJpgOrPng && isLt2M;
 }
 
+const dummyRequest = ({ file, onSuccess }) => {
+  setTimeout(() => {
+    onSuccess("ok");
+  }, 0);
+};
+
 class Avatar extends Component {
   state = {
     loading: false,
+    imageUrl: null,
   };
+  componentDidMount() {
+    this.setState({
+      imageUrl: this.props.value,
+    });
+  }
 
   handleChange = (info) => {
     if (info.file.status === "uploading") {
       this.setState({ loading: true });
+
       return;
     }
     if (info.file.status === "done") {
       // Get this url from response in real world.
-      getBase64(info.file.originFileObj, (imageUrl) =>
+
+      getBase64(info.file.originFileObj, (imageUrl) => {
+        this.props.addtoForm(imageUrl);
         this.setState({
           imageUrl,
           loading: false,
-        })
-      );
+        });
+      });
     }
   };
 
   render() {
+    let image = this.props.value;
+    const { loading, imageUrl } = this.state;
     const uploadButton = (
       <div>
-        {this.state.loading ? <LoadingOutlined /> : <PlusOutlined />}
-        <div className="ant-upload-text">Upload</div>
+        {loading ? <LoadingOutlined /> : <PlusOutlined />}
+        <div style={{ marginTop: 8 }}>Upload</div>
       </div>
     );
-    const { imageUrl } = this.state;
-    return (
+    const uploader = (
       <Upload
         name="avatar"
         listType="picture-card"
         className="avatar-uploader"
         showUploadList={false}
-        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
         beforeUpload={beforeUpload}
         onChange={this.handleChange}
+        customRequest={this.props.sendData}
       >
-        {imageUrl ? (
-          <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
+        {image ? (
+          <img src={image} alt="avatar" style={{ width: "100%" }} />
         ) : (
           uploadButton
         )}
       </Upload>
     );
+    return <>{uploader}</>;
   }
 }
 
