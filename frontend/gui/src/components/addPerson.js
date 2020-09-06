@@ -11,27 +11,25 @@ import {
   Select,
   InputNumber,
 } from "antd";
-import { EditOutlined } from "@ant-design/icons";
+import { UserAddOutlined } from "@ant-design/icons";
 import Avatar from "./uploadImage";
 import { Spin } from "antd";
 
 const { Option } = Select;
 let fmData = new FormData();
 
-class EditPerson extends Component {
+class AddPerson extends Component {
   formRef = React.createRef();
 
-  state = { visible: false, initdata: {}, formLoading: false, image: null };
+  state = { visible: false, formLoading: false, image: null };
   componentDidMount() {
     let PersonId = this.props.id;
     PersonId = 1;
 
-    let link = "http://127.0.0.1:8000/api/persons/" + PersonId + "/";
-    axios.get(link).then((res) => {
-      this.setState({
-        link,
-        initdata: res.data,
-      });
+    let link = "http://127.0.0.1:8000/api/persons/";
+
+    this.setState({
+      link,
     });
   }
 
@@ -39,7 +37,6 @@ class EditPerson extends Component {
     fmData = new FormData();
     axios.get(this.state.link).then((res) => {
       this.setState({
-        initdata: res.data,
         visible: true,
       });
       this.formRef.current.setFieldsValue(res.data);
@@ -61,7 +58,7 @@ class EditPerson extends Component {
     fmData.set("remark", this.formRef.current.getFieldValue("remark"));
 
     axios
-      .put(this.state.link, fmData, {
+      .post(this.state.link, fmData, {
         headers: {
           "content-type": "multipart/form-data", // do not forget this
         },
@@ -100,11 +97,12 @@ class EditPerson extends Component {
     }, 0);
   };
 
+
   render() {
     return (
       <>
         <Button type="primary" onClick={this.showDrawer}>
-          <EditOutlined /> Edit
+          <UserAddOutlined /> Add Client
         </Button>
 
         <Drawer
@@ -137,7 +135,6 @@ class EditPerson extends Component {
               layout="vertical"
               ref={this.formRef}
               onFinish={this.onFinish}
-              initialValues={this.state.initdata}
               hideRequiredMark
             >
               <Row>
@@ -237,4 +234,4 @@ class EditPerson extends Component {
   }
 }
 
-export default EditPerson;
+export default AddPerson;
