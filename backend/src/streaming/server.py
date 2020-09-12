@@ -16,12 +16,15 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 class VideoCamera(object):
     def __init__(self):
         path = os.path.join(dir_path, ('video2.mp4'))
+
         self.video = cv2.VideoCapture(path)
 
     def __del__(self):
         self.video.release()
 
     def get_frame(self):
+        from detections.models import Person
+        print(Person.objects.all())
         while True:
             ret, image = self.video.read()
             ret, jpeg = cv2.imencode('.jpg', image)
@@ -30,9 +33,6 @@ class VideoCamera(object):
 
 
 def gen(camera):
-    dat = [{'id': 1, 'name': 'mahmoud'}, {'id': 2, 'name': 'chouaib'}]
-
-    res_bytes = json.dumps(dat).encode('utf-8')
 
     while True:
 
@@ -50,8 +50,7 @@ async def time(websocket, path):
 
         data = next(gen(camera))
 
-        js = {'id': i, 'data': [{"name": "mahmoud", "age": 15}, {
-            "name": "chouaib", "age": 17}]}
+        js = {'id': i, 'data': data}
         res_bytes = json.dumps(js).encode('utf-8')
         base6 = base64.b64encode(res_bytes)
         message = base6.decode('utf-8')

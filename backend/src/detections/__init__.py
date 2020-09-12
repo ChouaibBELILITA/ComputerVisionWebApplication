@@ -1,1 +1,5 @@
-default_app_config = 'detections.apps.DetectionsConfig'
+
+import os
+
+if os.environ.get('RUN_MAIN', None) != 'true':
+    default_app_config = 'detections.apps.DetectionsConfig'
