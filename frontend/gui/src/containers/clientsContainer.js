@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { List, Descriptions, Divider } from "antd";
 import AddPerson from "../components/addPerson";
-
+import { connect } from "react-redux";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 
@@ -24,7 +24,9 @@ class ClientContainer extends Component {
       <div className="card">
         <div className="card-header">
           <br />
-          <AddPerson reloadData={this.reloadData}></AddPerson>
+          {this.props.isAuthenticated ? (
+            <AddPerson reloadData={this.reloadData}></AddPerson>
+          ) : null}
         </div>
         <div className="card-body">
           {" "}
@@ -59,7 +61,6 @@ class ClientContainer extends Component {
                     </Descriptions.Item>
                   </Descriptions>
                 </NavLink>
-
               </List.Item>
             )}
           />
@@ -68,4 +69,11 @@ class ClientContainer extends Component {
     );
   }
 }
-export default ClientContainer;
+
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.token !== null,
+  };
+};
+
+export default connect(mapStateToProps)(ClientContainer);

@@ -134,7 +134,7 @@ class MyTable extends Component {
     );
   }
 }
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     detections: [...state.personsInfo],
   };

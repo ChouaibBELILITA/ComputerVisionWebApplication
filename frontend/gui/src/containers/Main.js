@@ -1,7 +1,12 @@
 import React, { Component } from "react";
-
+import { connect } from "react-redux";
 import { Input, Layout, Menu, Breadcrumb } from "antd";
+
+import * as actions from "../store/actions/auth";
+import { NavLink, withRouter } from "react-router-dom";
 import {
+  LogoutOutlined,
+  LoginOutlined,
   DesktopOutlined,
   PieChartOutlined,
   SettingOutlined,
@@ -9,7 +14,6 @@ import {
   PlayCircleOutlined,
   IdcardOutlined,
 } from "@ant-design/icons";
-import { NavLink } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 class MyMain extends Component {
@@ -100,6 +104,19 @@ class MyMain extends Component {
             <Menu.Item key="6" icon={<SettingOutlined />}>
               <NavLink to="/configuration/">Config</NavLink>
             </Menu.Item>
+            {!this.props.isAuthenticated ? (
+              <Menu.Item key="7" icon={<LoginOutlined />}>
+                <NavLink to="/Login/">Login</NavLink>
+              </Menu.Item>
+            ) : (
+              <Menu.Item
+                key="7"
+                icon={<LogoutOutlined />}
+                onClick={this.props.logout}
+              >
+                logout
+              </Menu.Item>
+            )}
           </Menu>
         </Sider>
         <Layout className="site-layout">
@@ -117,4 +134,10 @@ class MyMain extends Component {
     );
   }
 }
-export default MyMain;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logout: () => dispatch(actions.logout()),
+  };
+};
+export default withRouter(connect(null, mapDispatchToProps)(MyMain));

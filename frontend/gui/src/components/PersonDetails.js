@@ -3,7 +3,7 @@ import MyTable from "./table";
 import EditPerson from "./EditPerson";
 import { Descriptions, Divider, Card, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
-
+import { connect } from "react-redux";
 class DetailView extends Component {
   state = { data: {} };
 
@@ -43,10 +43,12 @@ class DetailView extends Component {
             {this.props.data.remark}
           </Descriptions.Item>
           <Descriptions.Item>
-            <EditPerson
-              reloadData={this.props.reloadData}
-              personId={this.props.data.id}
-            ></EditPerson>
+            {this.props.isAuthenticated ? (
+              <EditPerson
+                reloadData={this.props.reloadData}
+                personId={this.props.data.id}
+              ></EditPerson>
+            ) : null}
           </Descriptions.Item>
         </Descriptions>
         <br />
@@ -59,4 +61,10 @@ class DetailView extends Component {
   }
 }
 
-export default DetailView;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.token !== null,
+  };
+};
+
+export default connect(mapStateToProps)(DetailView);

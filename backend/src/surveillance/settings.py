@@ -31,15 +31,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'detections',
     'rest_framework',
     'corsheaders',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'detections',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +147,6 @@ REST_FRAMEWORK = {
 
 
 CORS_ORIGIN_ALLOW_ALL = True
+ACCOUNT_EMAIL_VERIFCATION = "none"
+ACCOUNT_AUTHENTICATION_METHOD="username"
+ACCOUNT_EMAIL_REQUIRED=False

@@ -8,6 +8,8 @@ import Home from "./containers/Home";
 import AllVideosContainer from "./containers/allVideosContainer";
 import ClientsContainer from "./containers/clientsContainer";
 
+import Login from "./containers/Login";
+
 const BaseRouter = () => {
   return (
     <div>
@@ -18,6 +20,7 @@ const BaseRouter = () => {
       <Route exact path="/edit/" component={EditPerson} />
       <Route exact path="/videos/" component={AllVideosContainer} />
       <Route exact path="/details/" component={ClientsContainer} />
+      <Route exact path="/login/" component={Login} />{" "}
     </div>
   );
 };

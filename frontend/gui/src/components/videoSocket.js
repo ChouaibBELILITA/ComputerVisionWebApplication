@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./canvas.css";
 import { connect } from "react-redux";
+import { SET_PERSONS_INFOS } from "../store/actions/actionTypes";
 
 function b64toBlob(dataURI) {
   var byteString = atob(dataURI.split(",")[0]);
@@ -92,7 +93,7 @@ const mapDispachToProps = (dispatch) => {
   //dispatch(todoAction);
   return {
     setData: (data) => {
-      dispatch({ type: "SET_PERSONS_INFOS", data: data });
+      dispatch({ type: SET_PERSONS_INFOS, data: data });
     },
   };
 };
