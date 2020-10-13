@@ -25,10 +25,10 @@ def thr(i):
 
 
 def main():
-    num_threads = 3
-    threads = [threading.Thread(target=thr, args=(i,), daemon=True)
-               for i in range(num_threads)]
-    [t.start() for t in threads]
+
+    t = threading.Thread(target=thr, args=(0,), daemon=True)
+              
+    t.start() 
     lunch()
 
 

@@ -25,6 +25,7 @@ class Person(models.Model):
     )
     address = models.CharField(blank=True, max_length=100)
     remark = models.TextField(default="no remark")
+    description_vector = models.TextField(blank=True)
 
     # face_Descriptor = models.TextField(default="")
     # Danger_degree = models.TextField()
