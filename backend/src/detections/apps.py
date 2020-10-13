@@ -7,16 +7,14 @@ import asyncio
 from django.apps import AppConfig
 
 
-def lunch():
-    global lancer
-
-    lancer = True
 
 
 def thr(i):
     # we need to create a new loop for the thread, and set it as the 'default'
     # loop that will be returned by calls to asyncio.get_event_loop() from this
     # thread.
+    print("aaaa")
+   
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
@@ -29,7 +27,7 @@ def main():
     t = threading.Thread(target=thr, args=(0,), daemon=True)
               
     t.start() 
-    lunch()
+
 
 
 class DetectionsConfig(AppConfig):
