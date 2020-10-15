@@ -9,13 +9,13 @@ class Home extends Component {
   constructor(props) {
     super(props);
     let links = {
-      1: "127.0.0.1:5678",
-      2: "127.0.0.1:5679",
-      3: "127.0.0.1:5680",
-      4: "127.0.0.1:5681",
+      0: "127.0.0.1:5678",
+      1: "127.0.0.1:5679",
+      2: "127.0.0.1:5680",
+      3: "127.0.0.1:5681",
     };
     const CameraId = props.match.params.cameraId;
-    
+
     let link = links[CameraId];
     if (link == null) {
       link = "127.0.0.1:5678";
@@ -25,7 +25,6 @@ class Home extends Component {
       links: links,
       curent: curent,
     };
-
   }
   setData = (personinfo) => {
     this.setState({
@@ -38,7 +37,6 @@ class Home extends Component {
   render() {
     return (
       <div className=".container-fluid overflow-auto" width="100%">
-
         <div></div>
         <VideoSocket
           className=""
