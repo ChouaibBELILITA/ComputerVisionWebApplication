@@ -38,7 +38,7 @@ class MyMain extends Component {
 
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
             <SubMenu key="1" icon={<DesktopOutlined />} title="Home">
-              <Menu.Item key="5">
+              <Menu.Item key="8">
                 <NavLink to="/home/1/">
                   <img
                     className="img-fluid"
@@ -50,7 +50,7 @@ class MyMain extends Component {
                   camera 1
                 </NavLink>
               </Menu.Item>
-              <Menu.Item key="6">
+              <Menu.Item key="9">
                 <NavLink to="/home/2/">
                   <img
                     className="img-fluid"
@@ -62,7 +62,7 @@ class MyMain extends Component {
                   camera 2
                 </NavLink>
               </Menu.Item>
-              <Menu.Item key="7">
+              <Menu.Item key="10">
                 <NavLink to="/home/3/">
                   <img
                     className="img-fluid"
@@ -74,7 +74,7 @@ class MyMain extends Component {
                   camera 3
                 </NavLink>
               </Menu.Item>
-              <Menu.Item key="8">
+              <Menu.Item key="11">
                 <NavLink to="/home/4/">
                   <img
                     className="img-fluid"
