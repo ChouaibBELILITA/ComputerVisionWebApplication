@@ -8,31 +8,28 @@ class Home extends Component {
   state = { personinfo: {} };
   constructor(props) {
     super(props);
-    let links = {
-      0: "127.0.0.1:5678",
-      1: "127.0.0.1:5679",
-      2: "127.0.0.1:5680",
-      3: "127.0.0.1:5681",
-    };
-    const CameraId = props.match.params.cameraId;
 
-    let link = links[CameraId];
-    if (link == null) {
-      link = "127.0.0.1:5678";
-    }
-    let curent = link;
+    let links = {
+      1: "127.0.0.1:5678",
+      2: "127.0.0.1:5679",
+      3: "127.0.0.1:5680",
+      4: "127.0.0.1:5681",
+    };
+
     this.state = {
       links: links,
-      curent: curent,
     };
   }
+  componentDidMount() {}
   setData = (personinfo) => {
     this.setState({
       personinfo: personinfo,
     });
   };
   shouldComponentUpdate() {
-    return false;
+    console.log("update home");
+
+    return true;
   }
   render() {
     return (
@@ -42,7 +39,11 @@ class Home extends Component {
           className=""
           width={(window.innerWidth * 75) / 100}
           height="400px"
-          link={this.state.curent}
+          link={
+            this.state.links[this.props.match.params.cameraId]
+              ? this.state.links[this.props.match.params.cameraId]
+              : "127.0.0.1:5678"
+          }
           setdata={this.setData}
           key="1"
         ></VideoSocket>

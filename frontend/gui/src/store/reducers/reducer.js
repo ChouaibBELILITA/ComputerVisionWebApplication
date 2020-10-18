@@ -6,32 +6,7 @@ const initialState = {
   token: null,
   error: null,
   loading: false,
-  personsInfo: [
-    {
-      key: "1",
-      name: "John Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-    },
-    {
-      key: "2",
-      name: "def Grdfgdfeen",
-      age: 432,
-      address: "London No. 1 Lake Park",
-    },
-    {
-      key: "3",
-      name: "jkhjk Bdfglack",
-      age: 322,
-      address: "Sidney No. 1 Lake Park",
-    },
-    {
-      key: "4",
-      name: "Jim Red",
-      age: 32,
-      address: "London No. 2 Lake Park",
-    },
-  ],
+  personsInfo: [],
 };
 
 const reducer = (state = initialState, action) => {

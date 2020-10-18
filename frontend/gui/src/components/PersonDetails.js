@@ -55,7 +55,7 @@ class DetailView extends Component {
         <br />
         <br />
         <Divider> Persons with similar face descriptors</Divider>
-        <MyTable link="http://127.0.0.1:8000/api/persons/" />
+
       </Card>
     );
   }
