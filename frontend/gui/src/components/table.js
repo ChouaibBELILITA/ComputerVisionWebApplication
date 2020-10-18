@@ -60,6 +60,7 @@ class MyTable extends Component {
         title: "Name",
         dataIndex: "name",
         key: "name",
+        render: (text, row) => <a href={"/details/" + row.key}>{text}</a>,
         // filters: [
         //   { text: "Joe", value: "Joe" },
         //   { text: "Jim", value: "Jim" },
