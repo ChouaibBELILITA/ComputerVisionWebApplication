@@ -1826,7 +1826,7 @@ class Charts extends Component {
           <div className="card  mb-4">
             <div className="card-header ">
               <h3 className="font-weight-bold center">
-                Statistics pour aujourd'hui
+                Statistiques pour aujourd'hui
               </h3>
             </div>
 
@@ -1863,7 +1863,7 @@ class Charts extends Component {
                         <div className="row no-gutters align-items-center">
                           <div className="col mr-2">
                             <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
-                              Men
+                              Hommes
                             </div>
                             <div className="h5 mb-0 font-weight-bold text-gray-800">
                               {this.state.todaygenderdata.man}
@@ -1882,7 +1882,7 @@ class Charts extends Component {
                         <div className="row no-gutters align-items-center">
                           <div className="col mr-2">
                             <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                              Women
+                              Femmes
                             </div>
                             <div className="h5 mb-0 font-weight-bold text-gray-800">
                               {this.state.todaygenderdata.woman}
@@ -1923,7 +1923,7 @@ class Charts extends Component {
                   <div className="card shadow mb-4 .flex-fill">
                     <div className="card-header py-3">
                       <h6 className="m-0 font-weight-bold text-primary">
-                        Age Statistics
+                        Statistiques d'Age
                       </h6>
                     </div>
 
@@ -1945,7 +1945,7 @@ class Charts extends Component {
                   <div className="card shadow mb-4">
                     <div className="card-header py-3">
                       <h6 className="m-0 font-weight-bold text-primary">
-                        Gender Per Hour
+                        Sexe par heure
                       </h6>
                     </div>
 
@@ -1976,7 +1976,7 @@ class Charts extends Component {
                   <div className="card shadow  .flex-fill">
                     <div className="card-header py-3">
                       <h6 className="m-0 font-weight-bold text-primary">
-                        Age per Hour
+                        Age par Heurs
                       </h6>
                     </div>
 
@@ -2014,7 +2014,7 @@ class Charts extends Component {
           <div className="card  mb-6">
             <div className="card-header ">
               <h3 className="font-weight-bold center">
-                Statistics pour {this.state.date}
+                Statistiques pour {this.state.date}
               </h3>
               <Radio.Group onChange={this.onChange2} value={radioValue}>
                 <Radio style={radioStyle} value={0}>
@@ -2068,7 +2068,7 @@ class Charts extends Component {
                         <div className="row no-gutters align-items-center">
                           <div className="col mr-2">
                             <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
-                              Men
+                              Hommes
                             </div>
                             <div className="h5 mb-0 font-weight-bold text-gray-800">
                               {this.state.dategenderdata.man}
@@ -2087,7 +2087,7 @@ class Charts extends Component {
                         <div className="row no-gutters align-items-center">
                           <div className="col mr-2">
                             <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                              Women
+                              Femmes
                             </div>
                             <div className="h5 mb-0 font-weight-bold text-gray-800">
                               {this.state.dategenderdata.woman}
@@ -2128,7 +2128,7 @@ class Charts extends Component {
                   <div className="card shadow mb-4 .flex-fill">
                     <div className="card-header py-3">
                       <h6 className="m-0 font-weight-bold text-primary">
-                        Age Statistics
+                        statistiques d'Age 
                       </h6>
                     </div>
 

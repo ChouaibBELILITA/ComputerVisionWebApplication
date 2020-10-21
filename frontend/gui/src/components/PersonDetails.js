@@ -33,13 +33,13 @@ class DetailView extends Component {
           <Descriptions.Item label="Age">
             {this.props.data.age}
           </Descriptions.Item>
-          <Descriptions.Item label="sex">
+          <Descriptions.Item label="sexe">
             {this.sexdetail(this.props.data.gender)}
           </Descriptions.Item>
-          <Descriptions.Item label="Address">
+          <Descriptions.Item label="Adresse">
             {this.props.data.address}
           </Descriptions.Item>
-          <Descriptions.Item label="Remark">
+          <Descriptions.Item label="Remarque">
             {this.props.data.remark}
           </Descriptions.Item>
           <Descriptions.Item>
@@ -54,8 +54,6 @@ class DetailView extends Component {
         <br />
         <br />
         <br />
-        <Divider> Persons with similar face descriptors</Divider>
-
       </Card>
     );
   }

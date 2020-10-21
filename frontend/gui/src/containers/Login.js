@@ -61,12 +61,12 @@ class LoginForm extends Component {
             onFinishFailed={this.onFinishFailed}
           >
             <Form.Item
-              label="Username"
+              label="Nom d'utilisateur"
               name="username"
               rules={[
                 {
                   required: true,
-                  message: "Please input your username!",
+                  message: "Entrer le Nom d'utilisateur!",
                 },
               ]}
             >
@@ -74,25 +74,25 @@ class LoginForm extends Component {
             </Form.Item>
 
             <Form.Item
-              label="Password"
+              label="Mot de Passe"
               name="password"
               rules={[
                 {
                   required: true,
-                  message: "Please input your password!",
+                  message: "Entrer le Mot de Pass Correct!",
                 },
               ]}
             >
               <Input.Password />
             </Form.Item>
 
-            <Form.Item {...tailLayout} name="remember" valuePropName="checked">
+            {/* <Form.Item {...tailLayout} name="remember" valuePropName="checked">
               <Checkbox>Remember me</Checkbox>
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item {...tailLayout}>
               <Button type="primary" htmlType="submit">
-                Submit
+                Envoyer
               </Button>
             </Form.Item>
           </Form>

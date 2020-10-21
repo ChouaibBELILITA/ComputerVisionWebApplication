@@ -57,7 +57,7 @@ class MyTable extends Component {
     filteredInfo = filteredInfo || {};
     const columns = [
       {
-        title: "Name",
+        title: "Nom",
         dataIndex: "name",
         key: "name",
         render: (text, row) => <a href={"/details/" + row.key}>{text}</a>,
@@ -80,7 +80,7 @@ class MyTable extends Component {
         ellipsis: true,
       },
       {
-        title: "Address",
+        title: "Adresse",
         dataIndex: "address",
         key: "address",
         // filters: [

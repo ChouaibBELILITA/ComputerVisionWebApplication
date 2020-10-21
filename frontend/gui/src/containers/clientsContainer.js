@@ -56,7 +56,7 @@ class ClientContainer extends Component {
                     <Descriptions.Item label="Age">
                       {item.age}
                     </Descriptions.Item>
-                    <Descriptions.Item label="address">
+                    <Descriptions.Item label="adresse">
                       {item.address}
                     </Descriptions.Item>
                   </Descriptions>

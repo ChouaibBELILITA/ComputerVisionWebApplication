@@ -97,16 +97,15 @@ class AddPerson extends Component {
     }, 0);
   };
 
-
   render() {
     return (
       <>
         <Button type="primary" onClick={this.showDrawer}>
-          <UserAddOutlined /> Add Client
+          <UserAddOutlined /> Ajouter
         </Button>
 
         <Drawer
-          title="Add a new Client"
+          title="Ajouter un nouveau client"
           width={720}
           onClose={this.onClose}
           visible={this.state.visible}
@@ -118,14 +117,14 @@ class AddPerson extends Component {
               }}
             >
               <Button onClick={this.onClose} style={{ marginRight: 8 }}>
-                Cancel
+                Annuler
               </Button>
               <Button
                 onClick={this.submitForm}
                 type="primary"
                 htmlType="submit"
               >
-                Submit
+                Valider
               </Button>
             </div>
           }
@@ -149,23 +148,19 @@ class AddPerson extends Component {
                 <Col span={12}>
                   <Form.Item
                     name="firstName"
-                    label="First Name"
-                    rules={[
-                      { required: false, message: "Please enter user name" },
-                    ]}
+                    label="Nom"
+                    rules={[{ required: true, message: "Enter le prenom" }]}
                   >
-                    <Input placeholder="Please enter user name" />
+                    <Input placeholder="Enter le nom" />
                   </Form.Item>
                 </Col>
                 <Col span={12}>
                   <Form.Item
                     name="familyName"
-                    label="Family Name"
-                    rules={[
-                      { required: false, message: "Please enter family name" },
-                    ]}
+                    label="Prenom"
+                    rules={[{ required: true, message: "Enter le prenom" }]}
                   >
-                    <Input placeholder="Please enter family name" />
+                    <Input placeholder="Enter le prenom" />
                   </Form.Item>
                 </Col>
               </Row>
@@ -173,15 +168,15 @@ class AddPerson extends Component {
                 <Col span={12}>
                   <Form.Item
                     name="gender"
-                    label="sex"
+                    label="sexe"
                     rules={[
                       {
                         required: false,
-                        message: "Please select the client sex",
+                        message: "Entrer le sex du client",
                       },
                     ]}
                   >
-                    <Select placeholder="Please select  the client sex">
+                    <Select placeholder="Entrer le sex du client">
                       <Option value="M">Male</Option>
                       <Option value="F"> Female</Option>
                     </Select>
@@ -197,12 +192,12 @@ class AddPerson extends Component {
                 <Col span={12}>
                   <Form.Item
                     name="address"
-                    label="Address"
+                    label="Adresse"
                     rules={[
-                      { required: false, message: "Please enter the address" },
+                      { required: false, message: "Entrer l'age du client" },
                     ]}
                   >
-                    <Input placeholder="Please enter the address" />
+                    <Input placeholder="Entrer l'address du client " />
                   </Form.Item>
                 </Col>
               </Row>
@@ -215,14 +210,11 @@ class AddPerson extends Component {
                     rules={[
                       {
                         required: false,
-                        message: "please enter your remark",
+                        message: "Entrer un remark",
                       },
                     ]}
                   >
-                    <Input.TextArea
-                      rows={4}
-                      placeholder="please enter your remark"
-                    />
+                    <Input.TextArea rows={4} placeholder="Entrer un remark " />
                   </Form.Item>
                 </Col>
               </Row>

@@ -92,10 +92,10 @@ class Details extends Component {
           mode="horizontal"
         >
           <Menu.Item key="tab1" icon={<IdcardOutlined />}>
-            Infos
+            Informations
           </Menu.Item>
           <Menu.Item key="tab2" icon={<AreaChartOutlined />}>
-            Statistics
+            Statistiques
           </Menu.Item>
           <Menu.Item key="tab3" icon={<VideoCameraOutlined />}>
             Videos

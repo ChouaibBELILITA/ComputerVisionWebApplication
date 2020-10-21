@@ -90,7 +90,7 @@ class MyMain extends Component {
             </SubMenu>
 
             <Menu.Item key="2" icon={<PieChartOutlined />}>
-              <NavLink to="/statistics/">Statistic</NavLink>
+              <NavLink to="/statistics/">Statistiques</NavLink>
             </Menu.Item>
             <Menu.Item key="3" icon={<PlayCircleOutlined />}>
               <NavLink to="/videos/">Videos</NavLink>
@@ -101,12 +101,12 @@ class MyMain extends Component {
             <Menu.Item key="5" icon={<FileSearchOutlined />}>
               <NavLink to="/details/">Clients</NavLink>
             </Menu.Item>
-            <Menu.Item key="6" icon={<SettingOutlined />}>
+            {/* <Menu.Item key="6" icon={<SettingOutlined />}>
               <NavLink to="/configuration/">Config</NavLink>
-            </Menu.Item>
+            </Menu.Item> */}
             {!this.props.isAuthenticated ? (
               <Menu.Item key="7" icon={<LoginOutlined />}>
-                <NavLink to="/Login/">Login</NavLink>
+                <NavLink to="/Login/">Connecter</NavLink>
               </Menu.Item>
             ) : (
               <Menu.Item
@@ -114,7 +114,7 @@ class MyMain extends Component {
                 icon={<LogoutOutlined />}
                 onClick={this.props.logout}
               >
-                logout
+                Deconnecter
               </Menu.Item>
             )}
           </Menu>
